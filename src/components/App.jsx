@@ -1,15 +1,10 @@
-import { Component } from "react";
-import {
-  Header,
-  ButtonBox,
-  Button,
-  CountItem,
-  Statistic,
-} from './App.styled';
+import { Component } from 'react';
 
+import Section from './Section/Section';
+import Statistics from './Statistics/Statistics';
+import { FeedbackOptions } from './Buttons/FeedbackOptions';
 
-
-class App extends Component  {
+class App extends Component {
   state = {
     good: 0,
     neutral: 0,
@@ -35,46 +30,35 @@ class App extends Component  {
 
     return PositivePercents;
   };
-  render (){
-    return(
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        flexDirection:'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        color: '#010101'
-      }}
-    >
-     
-        <Header>Please leave feedback</Header>
-        <ButtonBox>
-          <Button type="button" onClick={this.handleClick} name="good">
-            Good
-          </Button>
-          <Button type="button" onClick={this.handleClick} name="neutral">
-            Neutral
-          </Button>
-          <Button type="button" onClick={this.handleClick} name="bad">
-            Bad
-          </Button>
-        </ButtonBox>
-        <Statistic>Statistics:</Statistic>
-        <CountItem>Good: {this.state.good}</CountItem>
-        <CountItem>Neutral: {this.state.neutral}</CountItem>
-        <CountItem>Bad: {this.state.bad}</CountItem>
-        <CountItem>Total: {this.countTotalFeedback()}</CountItem>
-        <CountItem>
-          Positive feedback:{' '}
-          {this.countPositiveFeedbackPercentage() === 'NaN'
-            ? '0'
-            : this.countPositiveFeedbackPercentage()}
-          %
-        </CountItem>
-        
-    </div>
-  )
-}};
+  render() {
+    return (
+      <div
+        style={{
+          height: '100vh',
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center',
+          alignItems: 'center',
+          fontSize: 40,
+          color: '#010101',
+        }}
+      >
+        {' '}
+        <Section title="Please leave feedback">
+          <FeedbackOptions
+            options={this.state}
+            onLeaveFeedback={this.handleClick}
+          ></FeedbackOptions>
+          <Statistics
+            good={this.state.good}
+            neutral={this.state.neutral}
+            bad={this.state.bad}
+            total={this.countTotalFeedback}
+            positivePercentage={this.countPositiveFeedbackPercentage}
+          ></Statistics>
+        </Section>
+      </div>
+    );
+  }
+}
 export default App;
