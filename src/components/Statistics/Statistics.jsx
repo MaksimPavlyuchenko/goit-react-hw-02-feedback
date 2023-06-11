@@ -1,4 +1,5 @@
 import { Statistic, CountItem } from './Statistics.styled';
+import Notification from '../Notification/Notification';
 
 
 export const Statistics = ({
@@ -7,12 +8,13 @@ export const Statistics = ({
   bad,
   total,
   positivePercentage
-},children) => {
+}) => {
+  
   return (
     <>
       <Statistic>Statistics:</Statistic>
       {good === 0 && neutral === 0 && bad === 0 ? (
-        'No feedback given'
+       <Notification message="There is no feedback"/>
       ) : (
         <>
           <CountItem>Good: {good}</CountItem>
