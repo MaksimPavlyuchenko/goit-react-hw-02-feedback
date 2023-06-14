@@ -3,11 +3,11 @@ import PropTypes from 'prop-types';
 import { ButtonBox, Button } from './FeedbackOptions.styled';
 
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
-  const Keys = Object.keys(options);
+  const keys = Object.keys(options);
 
   return (
     <ButtonBox>
-      {Keys.map(key => {
+      {keys.map(key => {
         return (
           <Button type="button" key={key} onClick={onLeaveFeedback} name={key}>
             {key}
@@ -18,11 +18,11 @@ export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   );
 };
 
-FeedbackOptions.propTypes={
-  onLeaveFeedback:PropTypes.func.isRequired,
-  options:PropTypes.shape({
-bad:PropTypes.number.isRequired,
-good:PropTypes.number.isRequired,
-neutral:PropTypes.number.isRequired,
-  })
-}
+FeedbackOptions.propTypes = {
+  onLeaveFeedback: PropTypes.func.isRequired,
+  options: PropTypes.shape({
+    bad: PropTypes.number.isRequired,
+    good: PropTypes.number.isRequired,
+    neutral: PropTypes.number.isRequired,
+  }),
+};

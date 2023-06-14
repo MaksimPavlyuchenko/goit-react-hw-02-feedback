@@ -4,8 +4,6 @@ import Section from './Section/Section';
 import Statistics from './Statistics/Statistics';
 import { FeedbackOptions } from './Buttons/FeedbackOptions';
 
-
-
 class App extends Component {
   state = {
     good: 0,
@@ -33,6 +31,7 @@ class App extends Component {
     return PositivePercents;
   };
   render() {
+    const { bad, neutral, good } = this.state;
     return (
       <div
         style={{
@@ -52,9 +51,9 @@ class App extends Component {
             onLeaveFeedback={this.handleClick}
           ></FeedbackOptions>
           <Statistics
-            good={this.state.good}
-            neutral={this.state.neutral}
-            bad={this.state.bad}
+            good={good}
+            neutral={neutral}
+            bad={bad}
             total={this.countTotalFeedback}
             positivePercentage={this.countPositiveFeedbackPercentage}
           ></Statistics>
