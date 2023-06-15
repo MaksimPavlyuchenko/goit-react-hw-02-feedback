@@ -17,16 +17,16 @@ class App extends Component {
     });
   };
   countTotalFeedback = () => {
-    const TotalCount = Object.values(this.state).reduce((total, number) => {
+    const totalCount = Object.values(this.state).reduce((total, number) => {
       return total + number;
     }, 0);
-    return TotalCount;
+    return totalCount;
   };
   countPositiveFeedbackPercentage = () => {
-    const PositivePercents =
+    const positivePercents =
       ((this.state.good / this.countTotalFeedback()) * 100).toFixed(0) || 0;
 
-    return PositivePercents;
+    return positivePercents;
   };
   render() {
     const { bad, good, neutral } = this.state;
@@ -50,6 +50,8 @@ class App extends Component {
             options={options}
             onLeaveFeedback={this.handleClick}
           ></FeedbackOptions>
+        </Section>
+        <Section>
           <Statistics
             good={good}
             neutral={neutral}
