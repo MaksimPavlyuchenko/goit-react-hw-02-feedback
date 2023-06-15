@@ -5,10 +5,15 @@ import { ButtonBox, Button } from './FeedbackOptions.styled';
 export const FeedbackOptions = ({ options, onLeaveFeedback }) => {
   return (
     <ButtonBox>
-      {options.map(key => {
+      {options.map(item => {
         return (
-          <Button type="button" key={key} onClick={onLeaveFeedback} name={key}>
-            {key}
+          <Button
+            type="button"
+            key={item}
+            onClick={onLeaveFeedback}
+            name={item}
+          >
+            {item}
           </Button>
         );
       })}
