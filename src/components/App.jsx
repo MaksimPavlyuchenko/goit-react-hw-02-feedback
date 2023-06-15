@@ -31,7 +31,9 @@ class App extends Component {
     return PositivePercents;
   };
   render() {
-    const { bad, neutral, good } = this.state;
+    const { bad, good, neutral } = this.state;
+    const options = Object.keys(this.state);
+
     return (
       <div
         style={{
@@ -47,7 +49,7 @@ class App extends Component {
         {' '}
         <Section title="Please leave feedback">
           <FeedbackOptions
-            options={this.state}
+            options={options}
             onLeaveFeedback={this.handleClick}
           ></FeedbackOptions>
           <Statistics
