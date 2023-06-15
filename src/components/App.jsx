@@ -11,9 +11,9 @@ class App extends Component {
     bad: 0,
   };
 
-  handleClick = e => {
+  handleClick = item => {
     this.setState(prevState => {
-      return { [e.target.name]: prevState[e.target.name] + 1 };
+      return { [item]: prevState[item] + 1 };
     });
   };
   countTotalFeedback = () => {
